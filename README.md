@@ -1,5 +1,5 @@
 # std-map-implementation
-This is my implementation of std::map in the standard C++ library. It mimics much of its behavior like O(1) begin() and end(), and iterators remaining valid after insertions and deletions. The map hold key-value pairs and orders them using a comparison function. The underlying data structure is a self-balancing binary tree using red-black techniques to ensure logarithmic insert, search, and deletion. 
+This is my implementation of std::map in the standard C++ library. It mimics much of its behavior like O(1) begin() and end(), and iterators remaining valid after insertions and deletions. The map hold key-value pairs and orders them using a comparison function. Keys are unique, but values can be non-unique.The underlying data structure is a self-balancing binary tree using red-black techniques to ensure logarithmic insert, search, and deletion. 
 
 Definition:
 ```
@@ -73,4 +73,19 @@ class Map;
 | `iterator erase(const_iterator first, const_iterator last)` | Erase range of elements including `first` and excluding `last`. Return iterator to element after last one erased (`last`) |
 | `void swap(Map& x)` | Swaps the contents of the current map and `x` |
 | `void clear()` | Empties the map |
+### Observers
+| Definition | Description |
+| ---------- | ----------- |
+| `key_compare key_comp() const` | Returns the comparator used by the map to order values |
+### Lookup
+| Definition | Description |
+| ---------- | ----------- |
+| `iterator find(const key_type& k)` | Return iterator to pair with key 'k' in map |
+| `const_iterator find(const key_type& k) const` | Return const iterator to pair with key 'k' in map |
+| `size_t count(const key_type& k) const` | Return count of elements in map with key 'k'. Because keys are unique, will be either 0 or 1. |
+| `iterator lower_bound(const key_type& k)` | Return iterator to element after lower bound key 'k' |
+| `const_iterator lower_bound(const key_type& k) const` | Return const iterator to element after lower bound key 'k' |
+| `iterator upper_bound(const key_type& k)` | Return iterator to element before upper bound key 'k' |
+| `const_iterator upper_bound(const key_type& k) const` | Return iterator to element before upper bound key 'k' |
+| `std::pair<const_iterator, const_iterator> equal_range(const key_type& k) const` | Return a range of iterators containing elements with the key 'k'. Since keys are unique, the range is at most one element wide. |
 
