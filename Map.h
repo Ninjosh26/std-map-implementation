@@ -41,51 +41,6 @@ class Map {
         using reverse_iterator       = reverse_RB_tree_iterator<value_type>;
         using const_reverse_iterator = reverse_RB_tree_iterator<const value_type>;
 
-
-
-        //////////////////////
-        // Member Functions //
-        //////////////////////
-    
-        /*
-        Map();
-        Map(Map& other);
-        Map(Map&& other);
-        ~Map();
-        Map& operator=(Map& other);
-        Map& operator=(Map&& other);
-
-        // ITERATOR FUNCTIONS
-        iterator begin() noexcept;
-        const_iterator begin() const noexcept;
-        iterator end() noexcept;
-        const_iterator end() const noexcept;
-        reverse_iterator rbegin() noexcept;
-        const_reverse_iterator rbegin() const noexcept;
-        reverse_iterator rend() noexcept;
-        const_reverse_iterator rend() const noexcept;
-        const_iterator cbegin() const noexcept;
-        const_iterator cend() const noexcept;
-        const_reverse_iterator crbegin() const noexcept;
-        const_reverse_iterator crend() const noexcept;
-
-        // CAPACITY FUNCTIONS
-        bool empty() const noexcept;
-        size_t size() const noexcept;
-
-        // ELEMENT ACCESS
-        mapped_type& operator[] (const key_type& k);
-        mapped_type& operator[] (key_type&& k);
-        mapped_type& at (const key_type& k);
-        const mapped_type& at (const key_type& k) const;
-
-        // MODIFIER FUNCTIONS
-        std::pair<iterator,bool> insert (const value_type& val);
-        std::pair<iterator,bool> insert (value_type&& val);
-        void clear();
-
-        */
-
     private:
         // Node for Red-Black Tree
         struct RB_Node {
