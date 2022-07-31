@@ -24,8 +24,53 @@ class Map;
 | `const_reverse_iterator` | Bidirectional const_iterator in reverse order |
 
 ## Member Functions
-`Map()`: Constructs empty map
-```
-template<class IntputIter>
-Map(InputIter first, InputIter last) : Constructs a map from  range of map iterators
-```
+| Definition                                                              | Description                              |
+| ----------------------------------------------------------------------- | ---------------------------------------- |
+| `Map()`                                                                 | Constructs empty map                     |
+| `template<class InputIter>` <br> `Map(InputIter first, InputIter last)` | Constructs a map from range of iterators |
+| `Map(std::initializer_list<value_type> il)`                             | Constructs a map from initializer list   |
+| `Map(const Map& other)`                                                 | Copy constructor                         |
+| `Map(Map&& other)`                                                      | Move constructor                         |
+| `~Map()`                                                                | Destructor                               |
+| `Map& operator=(const Map& other)`                        | Copy assignment operator                 |
+| `Map& operator=(Map&& other)`                             | Move assignment operator                 |
+| `Map& operator=(std::initializer_list<value_type> il)`    | Initializer list assignment operator     |
+### Iterators
+| Definition | Description |
+| ---------- | ----------- |
+| `iterator begin() noexcept`                               | `iterator` to first element (min)        |
+| `const_iterator begin() const noexcept`                   | `const_iterator` to first element |
+| `iterator end() noexcept`                                 | `iterator` to after last element |
+| `const_iterator end() const noexcept`                     | `const_iterator` to after last element |
+| `reverse_iterator rbegin() noexcept`                      | `reverse_iterator` to last element (max) |
+| `const_reverse_iterator rbegin() const noexcept`          | `const_reverse_iterator` to last element |
+| `reverse_iterator rend() noexcept`                        | `reverse_iterator ` to before first element |
+| `const_reverse_iterator rend() const noexcept`            | `const_reverse_iterator` to before first element |
+| `const_iterator cbegin() const noexcept`                  | `const_iterator` to first element |
+| `const_iterator cend() const noexcept`                    | `const_iterator` to after last element |
+| `const_reverse_iterator crbegin() const noexcept`         | `const_reverse_iterator` to last element |
+| `const_reverse_iterator crend() const noexcept`           | `const_reverse_iterator` to before first element |
+### Capacity
+| Definition | Description |
+| ---------- | ----------- |
+| `bool empty() const noexcept`                             | Returns true if empty |
+| `size_t size() const noexcept`                            | Returns number of values in map |
+### Element Access
+| Definition | Description |
+| ---------- | ----------- |
+| `mapped_type& operator[] (const key_type& k)`             | Access value with key `k`. If `k` does not exist, insert it with default value. |
+| `mapped_type& operator[] (key_type&& k)`                  | Access value with temporary key `k`. If `k` does not exist, insert it with default value. |
+| `mapped_type& at (const key_type& k)`                     | Access value with key `k`. If `k` does not exist, throws `std::out_of_range()`. |
+| `const mapped_type& at (const key_type& k) const`         | Access const value with key `k`. If `k` does not exist, throws `std::out_of_range()`. |
+### Modifiers
+| Definition | Description |
+| ---------- | ----------- |
+| `std::pair<iterator,bool> insert (const value_type& val)` | Insert key-value pair `val`. Returns an iterator-bool pair, with an iterator to the element and a bool representing if a new key was inserted |
+| `std::pair<iterator,bool> insert (value_type&& val)`      | Insert temporary key-value pair `val`. Returns an iterator-bool pair, with an iterator to the element and a bool representing if a new key was inserted |
+| `iterator erase( iterator pos )`                          | Erase element given by `pos`. `pos` should be a valid and dereferencable iterator. Returns iterator to element after the one erased |
+| `iterator erase(const_iterator pos)`                      | Erase element given by `pos`. `pos` should be a valid and dereferencable iterator. Returns iterator to element after the one erased |
+| `size_t erase(const key_type& k)`                         | Erase element with key `k`. If element exists return 1, otherwise return 0. |
+| `iterator erase(const_iterator first, const_iterator last)` | Erase range of elements including `first` and excluding `last`. Return iterator to element after last one erased (`last`) |
+| `void swap(Map& x)` | Swaps the contents of the current map and `x` |
+| `void clear()` | Empties the map |
+
